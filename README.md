@@ -11,6 +11,9 @@ Creating a python program that will compute the text document similarity between
 As part of answering the question, we can also compare and comment on which of the two methods (or any other measure if you have used some other measure) will perform better and what are the reasons for it.
 
 
+
+
+
 #Answer:
 
 The code is devided in two segments, one for finding matching words list, the other for finding similarity percentage
