@@ -1,2 +1,2 @@
 # Text-Document-Similarity-Detection-Without-Using-ML-Libraries
-Building Similarity detection from scratch
+Building similarity detection ML codes from scratch using linear algebra.
