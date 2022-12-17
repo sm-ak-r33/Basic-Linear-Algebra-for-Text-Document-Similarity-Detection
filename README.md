@@ -19,41 +19,21 @@ As part of answering the question, we can also compare and comment on which of t
 Text Document Similarity is the procedure of matching one textual piece to another and determining their similarities. It amounts to assessing one or multiple texts’ or documents’ degree of proximity with another. This is a very important aspect of machine learning and linear algebra which is frequently used in fields like plagiarism checks, search engines, automated product suggestions for online customers, and even for filtering out the best candidate for a certain job role. (Pal, 2022) 
 To find text similarities one needs to convert sentences into machine readable formats. The process is executed by breaking down the words from a sentence into datasets which are transformed into vectors so that the computer can use it to assess similarities. For example, the sentences “I live in Asia” and “You live in Australia” can be embedded as a list of words [“I”, “You”, “live”, “in”, “Asia”, “Australia” ] and can be vectorized with element 0 and 1 into machine readable form by the following approach according to their presence:
 
-Sentence
-“I”
-“You”
- “live”
-“in”
-“Asia”
-“Australia”
-
-“I live in Asia”
-1
-0
-1
-1
-1
-0
-
-“You live in Australia”
-0
-1
-1
-1
-0
-1
+![Table](pjkt/Capture.JPG)
 
 Vector distances can be estimated by using a variety of metrics to check for similarities. For our implementation, the following four metrics have been executed:
 
 
-i) Euclidean Distance: The length of a line segment connecting two locations is referred to as the Euclidean distance. For an n dimensional Euclidean Space, the distance can be measured by the formula (Tabak, 2014): d(p,q)= (p1-q1)2+(p2-q2)2+......+(pi-qi)2+..........(pn-qn)2 
+i) Euclidean Distance: The length of a line segment connecting two locations is referred to as the Euclidean distance. For an n dimensional Euclidean Space, the distance can be measured by the formula (Tabak, 2014):
+
+                                          ![ED](pjkt/sgdd.JPG)
 
 From the equation it can be observed that the similarity score will decrease as the distance increases between two vectors in dimension “n”. To increase comparability between results the following equation was applied: 11 + d(p,q) = sim. As a result the output is bounded between 0 and 1, with 1 representing full similarity and 0 representing no similarity.
 
-ii) Jaccard Similarity: The Jaccard coefficient, which is defined as the size of the intersection divided by the size of the union of the sample sets, assesses similarity between finite sample sets. This can be calculated by the formula: J(A,B) = (AB)/(AB)
+ii) Jaccard Similarity: The Jaccard coefficient, which is defined as the size of the intersection divided by the size of the union of the sample sets, assesses similarity between finite sample sets. This can be calculated by the formula: J(A,B) = (A∩B)/(AUB)
 
 It is to be mentioned that, for this specific implication, the words in a sentence need not be vectorized (however in our application they are). It is the intersection of two sentences/texts between which the similarity is being calculated divided by the union of those two which refers to the number of common words over the total number of words present in. It has a score ranging from 0 to 1, where 1 represents full similarity and 0 represents no similarity.
 
 iii) Cosine Similarity: A basic measure of how similar two vectors in an inner product space are is called cosine similarity. If two embeddings are pointing approximately in the same direction or not can be determined by measuring the cosine of the angle between them. For two vectors A and B, it can be computed by the following formula:
-
+                                     ![CS](pjkt/fbfcncd.JPG) 
 When the embeddings are oriented in the same direction, their cosine similarity equals 1, because their angle is zero. When the embeddings are perpendicular to one another, the angle is 90 degrees, and the cosine similarity is 0. Finally, the cosine similarity is -1 when the angle is 180 degrees (Langenderfer, 2021). But for the word vectorization it will vary between the range of 0 and 1 as count values are not negative.
