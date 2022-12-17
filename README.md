@@ -28,7 +28,7 @@ i) Euclidean Distance: The length of a line segment connecting two locations is 
 
 ![ED](pjkt/sgdd.JPG)
 
-From the equation it can be observed that the similarity score will decrease as the distance increases between two vectors in dimension “n”. To increase comparability between results the following equation was applied: 11 + d(p,q) = sim. As a result the output is bounded between 0 and 1, with 1 representing full similarity and 0 representing no similarity.
+From the equation it can be observed that the similarity score will decrease as the distance increases between two vectors in dimension “n”. To increase comparability between results the following equation was applied: 1(1 + d(p,q)) = similarity. As a result the output is bounded between 0 and 1, with 1 representing full similarity and 0 representing no similarity.
 
 ii) Jaccard Similarity: The Jaccard coefficient, which is defined as the size of the intersection divided by the size of the union of the sample sets, assesses similarity between finite sample sets. This can be calculated by the formula: 
 
