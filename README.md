@@ -23,16 +23,15 @@ To find text similarities one needs to convert sentences into machine readable f
 
 Vector distances can be estimated by using a variety of metrics to check for similarities. For our implementation, the following four metrics have been executed:
 
-
-i) Euclidean Distance: The length of a line segment connecting two locations is referred to as the Euclidean distance. For an n dimensional Euclidean Space, the distance can be measured by the formula (Tabak, 2014):
-
-![ED](pjkt/sgdd.JPG)
-
-From the equation it can be observed that the similarity score will decrease as the distance increases between two vectors in dimension “n”. To increase comparability between results the following equation was applied: 1(1 + d(p,q)) = similarity. As a result the output is bounded between 0 and 1, with 1 representing full similarity and 0 representing no similarity.
-
-
-ii) Cosine Similarity: A basic measure of how similar two vectors in an inner product space are is called cosine similarity. If two embeddings are pointing approximately in the same direction or not can be determined by measuring the cosine of the angle between them. For two vectors A and B, it can be computed by the following formula:
+i) Cosine Similarity: A basic measure of how similar two vectors in an inner product space are is called cosine similarity. If two embeddings are pointing approximately in the same direction or not can be determined by measuring the cosine of the angle between them. For two vectors A and B, it can be computed by the following formula:
 
 ![CS](pjkt/fbfcncd.JPG) 
 
 When the embeddings are oriented in the same direction, their cosine similarity equals 1, because their angle is zero. When the embeddings are perpendicular to one another, the angle is 90 degrees, and the cosine similarity is 0. Finally, the cosine similarity is -1 when the angle is 180 degrees (Langenderfer, 2021). But for the word vectorization it will vary between the range of 0 and 1 as count values are not negative.
+
+
+ii) Euclidean Distance: The length of a line segment connecting two locations is referred to as the Euclidean distance. For an n dimensional Euclidean Space, the distance can be measured by the formula (Tabak, 2014):
+
+![ED](pjkt/sgdd.JPG)
+
+From the equation it can be observed that the similarity score will decrease as the distance increases between two vectors in dimension “n”. To increase comparability between results the following equation was applied: 1(1 + d(p,q)) = similarity. As a result the output is bounded between 0 and 1, with 1 representing full similarity and 0 representing no similarity.
