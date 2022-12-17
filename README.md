@@ -16,164 +16,44 @@ As part of answering the question, we can also compare and comment on which of t
 
 #Answer:
 
-The code is devided in two segments, one for finding matching words list, the other for finding similarity percentage
-Part 1: matching words list
-###### First We Define a corpus which is a list of documents
-corpus=['When you are old and grey and full of sleep,',
-'And nodding by the fire, take down this book,',
-'And slowly read, and dream of the soft look',
-'Your eyes had once, and of their shadows deep;',
-'',
-'How many loved your moments of glad grace,',
-'And loved your beauty with love false or true,',
-'But one man loved the pilgrim soul in you,',
-'And loved the sorrows of your changing face;',
-'',
-'And bending down beside the glowing bars,',
-'Murmur, a little sadly, how Love fled',
-'And paced upon the mountains overhead',
-'And hid his face amid a crowd of stars.',
-'-When You Are Old ',
-'-Yeats']
-###### Data Cleaning function (removing all punctuations, whitespaces and transforming everything into lowercase)
-import re
-    
-def cleaner(x):   
-    x=" ".join(map(str,x))
-    x=re.sub(r"\W"," ",x) 
-    x=re.sub(' +', ' ',x) 
-    x=x.lower()
-    return x.split()
-###### Then we make a list of elements with all the words to build our dictionary
-final_list=cleaner(corpus)
-​
-###### We make a dictionaty with values as number of word occurences in the corpus  
-corp_dict = {}
-for m in final_list:
-    if( m in corp_dict.keys()):
-        corp_dict[m] += 1
-    else:
-        corp_dict[m]=1
-        
-print(corp_dict)
-{'when': 2, 'you': 3, 'are': 2, 'old': 2, 'and': 11, 'grey': 1, 'full': 1, 'of': 6, 'sleep': 1, 'nodding': 1, 'by': 1, 'the': 6, 'fire': 1, 'take': 1, 'down': 2, 'this': 1, 'book': 1, 'slowly': 1, 'read': 1, 'dream': 1, 'soft': 1, 'look': 1, 'your': 4, 'eyes': 1, 'had': 1, 'once': 1, 'their': 1, 'shadows': 1, 'deep': 1, 'how': 2, 'many': 1, 'loved': 4, 'moments': 1, 'glad': 1, 'grace': 1, 'beauty': 1, 'with': 1, 'love': 2, 'false': 1, 'or': 1, 'true': 1, 'but': 1, 'one': 1, 'man': 1, 'pilgrim': 1, 'soul': 1, 'in': 1, 'sorrows': 1, 'changing': 1, 'face': 2, 'bending': 1, 'beside': 1, 'glowing': 1, 'bars': 1, 'murmur': 1, 'a': 2, 'little': 1, 'sadly': 1, 'fled': 1, 'paced': 1, 'upon': 1, 'mountains': 1, 'overhead': 1, 'hid': 1, 'his': 1, 'amid': 1, 'crowd': 1, 'stars': 1, 'yeats': 1}
-###### We transform the dictionaty with decending order of values so that we can find the matches in decending order 
-final_dict=dict(sorted(corp_dict.items(),reverse=True, key=lambda item: item[1]))
-print(final_dict)
-{'and': 11, 'of': 6, 'the': 6, 'your': 4, 'loved': 4, 'you': 3, 'when': 2, 'are': 2, 'old': 2, 'down': 2, 'how': 2, 'love': 2, 'face': 2, 'a': 2, 'grey': 1, 'full': 1, 'sleep': 1, 'nodding': 1, 'by': 1, 'fire': 1, 'take': 1, 'this': 1, 'book': 1, 'slowly': 1, 'read': 1, 'dream': 1, 'soft': 1, 'look': 1, 'eyes': 1, 'had': 1, 'once': 1, 'their': 1, 'shadows': 1, 'deep': 1, 'many': 1, 'moments': 1, 'glad': 1, 'grace': 1, 'beauty': 1, 'with': 1, 'false': 1, 'or': 1, 'true': 1, 'but': 1, 'one': 1, 'man': 1, 'pilgrim': 1, 'soul': 1, 'in': 1, 'sorrows': 1, 'changing': 1, 'bending': 1, 'beside': 1, 'glowing': 1, 'bars': 1, 'murmur': 1, 'little': 1, 'sadly': 1, 'fled': 1, 'paced': 1, 'upon': 1, 'mountains': 1, 'overhead': 1, 'hid': 1, 'his': 1, 'amid': 1, 'crowd': 1, 'stars': 1, 'yeats': 1}
-#Finally we define the function that returns the list of matches in a given search document
-​
-def match_list(input_dict,input_doc):
-    l2=input_doc
-    l1=list(input_dict.keys())
-    mat1=[]
-    for j in l1:
-        for i in range (len(l2)):
-            if l2[i]==j:
-                mat1.append(j)
-                break
-​
-    return mat1
-#We provide our search doc/docs in a list 
-​
-search_doc=["This piece is usually considered to be about Yeats’ personal life.\
-It discusses the unrequited love that existed between Yeats and someone he used to be involved with.\
-The poem is structured as a dramatic monologue in which the speaker is addressing his once lover. \
-Through the image of a book, Yeats is able to remind the listener that she has been loved by many, \
-but by none like she is by one man in particular. This is a reference to the speaker, of course.\
-He loved her completely, and not just for her beauty as others have. \
-It is the speaker’s hope that after being reminded of these facts that she feels regret for leaving him."]
-​
-#We clean our search doc as well with the predefined function.
-​
-final_SD=cleaner(search_doc)
-#We use our function to find the matching keywords in the search doc and dictionary in decending order
-match_list(final_dict,final_SD)
-['and',
- 'of',
- 'the',
- 'loved',
- 'love',
- 'a',
- 'by',
- 'this',
- 'book',
- 'once',
- 'many',
- 'beauty',
- 'with',
- 'but',
- 'one',
- 'man',
- 'in',
- 'his',
- 'yeats']
-Part 2: Here we use vectorization to make similarity estimates.
-Mathematical explanation of 3 ways of doing this can be found in here :
-https://newscatcherapi.com/blog/ultimate-guide-to-text-similarity-with-python
+Theoretical Background
+Text Document Similarity is the procedure of matching one textual piece to another and determining their similarities. It amounts to assessing one or multiple texts’ or documents’ degree of proximity with another. This is a very important aspect of machine learning and linear algebra which is frequently used in fields like plagiarism checks, search engines, automated product suggestions for online customers, and even for filtering out the best candidate for a certain job role. (Pal, 2022) 
+To find text similarities one needs to convert sentences into machine readable formats. The process is executed by breaking down the words from a sentence into datasets which are transformed into vectors so that the computer can use it to assess similarities. For example, the sentences “I live in Asia” and “You live in Australia” can be embedded as a list of words [“I”, “You”, “live”, “in”, “Asia”, “Australia” ] and can be vectorized with element 0 and 1 into machine readable form by the following approach according to their presence:
 
-#we define a function to vectorize documents based on our corpus
-def vectorizer(input_dict,input_doc):
-    l2=input_doc
-    l1=list(input_dict.keys())
-    mat1=[]
-    for j in l1:
-        for i in range (len(l2)):
-            if l2[i]==j:
-                mat1.append(1)
-                break
-        else:
-            mat1.append(0)
-    return mat1
-doc1= ["When you are old and grey and full of sleep"]
-​
-doc2=["But one man loved the pilgrim soul in you"]
- 
-cln_doc1=cleaner(doc1)
-​
-cln_doc2=cleaner(doc2)
-    
-v1= vectorizer(final_dict,cln_doc1)
-​
-v2=vectorizer(final_dict,cln_doc2)
- #we have successfully changed these words into vectors :) where 1 means the dictionary word is available, 0 means not available
-print(v1, v2)
-[1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] [0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-1. Cosine similarity using dot products
-from math import sqrt, pow, exp
- 
-def squared_sum(x):
-    """ return 3 rounded square rooted value """
-    return round(sqrt(sum([a*a for a in x])),3)
-#now for calculation of cosine similarity we have the funcion:
-​
-​
-def cos_similarity(x,y):
-    numerator = sum(a*b for a,b in zip(x,y))
-    denominator = squared_sum(x)*squared_sum(y)
-    return round(numerator/float(denominator),3)
-​
-cos_similarity(v1, v2)
-0.111
-2. Euclidian Distance using norm
-def euclidean_distance(x,y):
-    """ return euclidean distance between two lists """
-    return sqrt(sum(pow(a-b,2) for a, b in zip(x, y)))
-​
-def distance_to_similarity(distance):
-    return (1/exp(distance))
-#now for calculation of euclidean_distance we have the funcion:
-dist=euclidean_distance(v1,v2)
-​
-distance_to_similarity(dist)
-0.018315638888734182
-Jaccard Similarity
-def jaccard_similarity(x,y):
-    """ returns the jaccard similarity between two lists """
-    intersection_cardinality = len(set.intersection(*[set(x), set(y)]))
-    union_cardinality = len(set.union(*[set(x), set(y)]))
-    return intersection_cardinality/float(union_cardinality)
-​
-jaccard_similarity(doc1[0], doc2[0])
-​
-0.6666666666666666
+Sentence
+“I”
+“You”
+ “live”
+“in”
+“Asia”
+“Australia”
+“I live in Asia”
+1
+0
+1
+1
+1
+0
+“You live in Australia”
+0
+1
+1
+1
+0
+1
+
+
+Vector distances can be estimated by using a variety of metrics to check for similarities. For our implementation, the following four metrics have been executed:
+
+
+i) Euclidean Distance: The length of a line segment connecting two locations is referred to as the Euclidean distance. For an n dimensional Euclidean Space, the distance can be measured by the formula (Tabak, 2014): d(p,q)= (p1-q1)2+(p2-q2)2+......+(pi-qi)2+..........(pn-qn)2 
+
+From the equation it can be observed that the similarity score will decrease as the distance increases between two vectors in dimension “n”. To increase comparability between results the following equation was applied: 11 + d(p,q) = sim. As a result the output is bounded between 0 and 1, with 1 representing full similarity and 0 representing no similarity.
+
+ii) Jaccard Similarity: The Jaccard coefficient, which is defined as the size of the intersection divided by the size of the union of the sample sets, assesses similarity between finite sample sets. This can be calculated by the formula: J(A,B) = (AB)/(AB)
+
+It is to be mentioned that, for this specific implication, the words in a sentence need not be vectorized (however in our application they are). It is the intersection of two sentences/texts between which the similarity is being calculated divided by the union of those two which refers to the number of common words over the total number of words present in. It has a score ranging from 0 to 1, where 1 represents full similarity and 0 represents no similarity.
+
+iii) Cosine Similarity: A basic measure of how similar two vectors in an inner product space are is called cosine similarity. If two embeddings are pointing approximately in the same direction or not can be determined by measuring the cosine of the angle between them. For two vectors A and B, it can be computed by the following formula:
+
+When the embeddings are oriented in the same direction, their cosine similarity equals 1, because their angle is zero. When the embeddings are perpendicular to one another, the angle is 90 degrees, and the cosine similarity is 0. Finally, the cosine similarity is -1 when the angle is 180 degrees (Langenderfer, 2021). But for the word vectorization it will vary between the range of 0 and 1 as count values are not negative.
