@@ -16,7 +16,6 @@ As part of answering the question, we can also compare and comment on which of t
 
 #Answer:
 
-Theoretical Background
 Text Document Similarity is the procedure of matching one textual piece to another and determining their similarities. It amounts to assessing one or multiple texts’ or documents’ degree of proximity with another. This is a very important aspect of machine learning and linear algebra which is frequently used in fields like plagiarism checks, search engines, automated product suggestions for online customers, and even for filtering out the best candidate for a certain job role. (Pal, 2022) 
 To find text similarities one needs to convert sentences into machine readable formats. The process is executed by breaking down the words from a sentence into datasets which are transformed into vectors so that the computer can use it to assess similarities. For example, the sentences “I live in Asia” and “You live in Australia” can be embedded as a list of words [“I”, “You”, “live”, “in”, “Asia”, “Australia” ] and can be vectorized with element 0 and 1 into machine readable form by the following approach according to their presence:
 
@@ -27,6 +26,7 @@ Sentence
 “in”
 “Asia”
 “Australia”
+
 “I live in Asia”
 1
 0
@@ -34,6 +34,7 @@ Sentence
 1
 1
 0
+
 “You live in Australia”
 0
 1
@@ -41,7 +42,6 @@ Sentence
 1
 0
 1
-
 
 Vector distances can be estimated by using a variety of metrics to check for similarities. For our implementation, the following four metrics have been executed:
 
