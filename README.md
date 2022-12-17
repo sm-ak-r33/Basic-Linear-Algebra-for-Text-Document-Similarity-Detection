@@ -35,6 +35,7 @@ ii) Jaccard Similarity: The Jaccard coefficient, which is defined as the size of
 It is to be mentioned that, for this specific implication, the words in a sentence need not be vectorized (however in our application they are). It is the intersection of two sentences/texts between which the similarity is being calculated divided by the union of those two which refers to the number of common words over the total number of words present in. It has a score ranging from 0 to 1, where 1 represents full similarity and 0 represents no similarity.
 
 iii) Cosine Similarity: A basic measure of how similar two vectors in an inner product space are is called cosine similarity. If two embeddings are pointing approximately in the same direction or not can be determined by measuring the cosine of the angle between them. For two vectors A and B, it can be computed by the following formula:
-                                     ![CS](pjkt/fbfcncd.JPG) 
+
+![CS](pjkt/fbfcncd.JPG) 
 
 When the embeddings are oriented in the same direction, their cosine similarity equals 1, because their angle is zero. When the embeddings are perpendicular to one another, the angle is 90 degrees, and the cosine similarity is 0. Finally, the cosine similarity is -1 when the angle is 180 degrees (Langenderfer, 2021). But for the word vectorization it will vary between the range of 0 and 1 as count values are not negative.
