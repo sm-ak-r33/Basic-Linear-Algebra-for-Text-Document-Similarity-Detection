@@ -26,7 +26,7 @@ Vector distances can be estimated by using a variety of metrics to check for sim
 
 i) Euclidean Distance: The length of a line segment connecting two locations is referred to as the Euclidean distance. For an n dimensional Euclidean Space, the distance can be measured by the formula (Tabak, 2014):
 
-                                          ![ED](pjkt/sgdd.JPG)
+![ED](pjkt/sgdd.JPG)
 
 From the equation it can be observed that the similarity score will decrease as the distance increases between two vectors in dimension “n”. To increase comparability between results the following equation was applied: 11 + d(p,q) = sim. As a result the output is bounded between 0 and 1, with 1 representing full similarity and 0 representing no similarity.
 
