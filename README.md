@@ -32,7 +32,7 @@ From the equation it can be observed that the similarity score will decrease as 
 
 ii) Jaccard Similarity: The Jaccard coefficient, which is defined as the size of the intersection divided by the size of the union of the sample sets, assesses similarity between finite sample sets. This can be calculated by the formula: 
 
-                                                          J(A,B) = (A∩B)/(AUB)
+                                                          J(A,B) = (A∩B)/(A∪B)
 
 It is to be mentioned that, for this specific implication, the words in a sentence need not be vectorized (however in our application they are). It is the intersection of two sentences/texts between which the similarity is being calculated divided by the union of those two which refers to the number of common words over the total number of words present in. It has a score ranging from 0 to 1, where 1 represents full similarity and 0 represents no similarity.
 
