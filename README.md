@@ -30,7 +30,9 @@ i) Euclidean Distance: The length of a line segment connecting two locations is 
 
 From the equation it can be observed that the similarity score will decrease as the distance increases between two vectors in dimension “n”. To increase comparability between results the following equation was applied: 11 + d(p,q) = sim. As a result the output is bounded between 0 and 1, with 1 representing full similarity and 0 representing no similarity.
 
-ii) Jaccard Similarity: The Jaccard coefficient, which is defined as the size of the intersection divided by the size of the union of the sample sets, assesses similarity between finite sample sets. This can be calculated by the formula: J(A,B) = (A∩B)/(AUB)
+ii) Jaccard Similarity: The Jaccard coefficient, which is defined as the size of the intersection divided by the size of the union of the sample sets, assesses similarity between finite sample sets. This can be calculated by the formula: 
+
+                                                          J(A,B) = (A∩B)/(AUB)
 
 It is to be mentioned that, for this specific implication, the words in a sentence need not be vectorized (however in our application they are). It is the intersection of two sentences/texts between which the similarity is being calculated divided by the union of those two which refers to the number of common words over the total number of words present in. It has a score ranging from 0 to 1, where 1 represents full similarity and 0 represents no similarity.
 
