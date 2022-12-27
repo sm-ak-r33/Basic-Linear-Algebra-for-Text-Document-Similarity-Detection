@@ -8,11 +8,6 @@ Creating a python program that will compute the text document similarity between
 
 2. distance norm (or Euclidean distance) between two vectors .e.g. || u − v ||
 
-As part of answering the question, we can also compare and comment on which of the two methods (or any other measure if you have used some other measure) will perform better and what are the reasons for it.
-
-
-
-
 
 #Answer:
 
